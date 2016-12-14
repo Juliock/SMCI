@@ -133,26 +133,6 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                         JOptionPane.showMessageDialog(null, e);
                     }
                 }
-
-                /**
-                 * fillArduinoTable(lastID); //Preenche a tabela tblArduinos com
-                 * os novos valores
-                 *
-                 * //Cadastra os sensores de cada Arduino com base na tabela
-                 * tblArduinos for (int i = 0; i < tblArduinos.getRowCount();
-                 * i++) { sql = "INSERT INTO sensores (gps, temperatura,
-                 * humidade, gases, chamas, tensao_bateria, intensidade,
-                 * idarduino, idcliente) VALUES (?,?,?,?,?,?,?,?,?)"; try { pst
-                 * = conexao.prepareStatement(sql); pst.setString(1, " ");
-                 * pst.setFloat(2, 0); pst.setFloat(3, 0); pst.setFloat(4, 0);
-                 * pst.setFloat(5, 0); pst.setFloat(6, 5); pst.setInt(7, 0);
-                 * pst.setString(8, tblArduinos.getValueAt(i, 0).toString());
-                 * pst.setString(9, lastID);
-                 *
-                 * //A linha abaixo atualiza a tabela arduino //e finaliza o
-                 * cadastro do cliente pst.executeUpdate(); } catch (Exception
-                 * e) { JOptionPane.showMessageDialog(null, e); } }*
-                 */
             }
         } catch (SQLException | HeadlessException f) {
             JOptionPane.showMessageDialog(null, f);
@@ -230,17 +210,6 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         }
     }
 
-    /**
-     * Método para preencher a tabela Arduinos private void
-     * fillArduinoTable(String id) { String sql = "SELECT * FROM arduino WHERE
-     * idcliente = ?";
-     *
-     * try { pst = conexao.prepareStatement(sql); pst.setString(1, id); rs =
-     * pst.executeQuery(); //A linha abaixo usa a biblioteca rs2xml para
-     * preencher a tabela tblArduinos
-     * tblArduinos.setModel(DbUtils.resultSetToTableModel(rs)); } catch
-     * (Exception e) { JOptionPane.showMessageDialog(null, e); } }*
-     */
     //Método para pesquisar o último cliente cadastrado
     private String lastClientAdded() {
         String sql = "SELECT * FROM clientes ORDER BY idcliente DESC LIMIT 1";
