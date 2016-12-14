@@ -605,7 +605,7 @@ public class TelaAlerta extends javax.swing.JInternalFrame {
         parameters.put("fonecb", txtFoneCb.getText());
 
         try {
-            JasperPrint print = JasperFillManager.fillReport("C:/Users/julio/Debug - PRJSMCI/reports/alertreport.jasper", parameters, conexao);
+            JasperPrint print = JasperFillManager.fillReport("src/br/com/smci/reports/alertreport.jasper", parameters, conexao);
 
             JasperViewer.viewReport(print, false);
         } catch (JRException ex) {
