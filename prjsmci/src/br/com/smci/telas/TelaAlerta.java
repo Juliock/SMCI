@@ -53,7 +53,7 @@ public class TelaAlerta extends javax.swing.JInternalFrame {
         txtHumid.setText(String.valueOf(humidade) + " %");
         txtGas.setText(String.valueOf(gases));
         txtFlam.setText(String.valueOf(chamas));
-        
+
         fetchData();
     }
 
@@ -575,9 +575,16 @@ public class TelaAlerta extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        double gpslat = 0;
+        double gpslon = 0;
+
         Scanner sc1 = new Scanner(txtGps.getText()).useDelimiter(",\\s");
-        double gpslat = Double.parseDouble(sc1.next());
-        double gpslon = Double.parseDouble(sc1.next());
+
+        try {
+            gpslat = Double.parseDouble(sc1.next());
+            gpslon = Double.parseDouble(sc1.next());
+        } catch (Exception e) {
+        }
 
         Map parameters = new HashMap();
 
