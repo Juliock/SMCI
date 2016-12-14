@@ -313,30 +313,32 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                     //A linha abaixo executa o update na tabela
                     pst.executeUpdate();
 
-                    //Por ultimo atualiza a tabela Arduinos
+                    //Para atualizar a tabela arduinos e preciso excluir os dados dela e das tabelas vinculadas
+                    sql = "DELETE FROM sensores WHERE idcliente = ?";   //Deleta dados dos sensores de cada arduino
+
+                    pst = conexao.prepareStatement(sql);
+                    pst.setString(1, txtCliID.getText());
+                    pst.executeUpdate();    //Executa update
+
+                    //Remove todos arduinos
+                    sql = "DELETE FROM arduino WHERE idcliente = ?";
+
+                    pst = conexao.prepareStatement(sql);
+                    pst.setString(1, txtCliID.getText());
+                    pst.executeUpdate();
+
+                    //Por ultimo insere o que esta na nova tabela de arduinos (tblArduinos)
                     for (int i = 0; i < tblArduinos.getRowCount(); i++) {
-                        if (tblArduinos.getValueAt(i, 0).toString().equals(" ")) {     //Se eh um novo Arduino entao insere na tabela
-                            System.out.println("a");
-                            sql = "INSERT INTO arduino (localizacao, idcliente) VALUES (?,?)";
+                        sql = "INSERT INTO arduino (localizacao, idcliente) VALUES (?,?)";
 
-                            pst = conexao.prepareStatement(sql);
-                            pst.setString(1, tblArduinos.getValueAt(i, 1).toString());
-                            pst.setString(2, tblArduinos.getValueAt(i, 2).toString());
+                        pst = conexao.prepareStatement(sql);
+                        pst.setString(1, tblArduinos.getValueAt(i, 1).toString());
+                        pst.setString(2, tblArduinos.getValueAt(i, 2).toString());
 
-                            //A linha abaixo atualiza a tabela arduino
-                            pst.executeUpdate();
-                        } else {    //Se o Arduino ja estava cadastrado entao atualiza
-                            sql = "UPDATE arduino SET localizacao = ? WHERE idarduino = ? AND idcliente = ?";
-
-                            pst = conexao.prepareStatement(sql);
-                            pst.setString(1, tblArduinos.getValueAt(i, 1).toString());
-                            pst.setString(2, tblArduinos.getValueAt(i, 0).toString());
-                            pst.setString(3, tblArduinos.getValueAt(i, 2).toString());
-
-                            //A linha abaixo atualiza a tabela arduino
-                            pst.executeUpdate();
-                        }
+                        //A linha abaixo atualiza a tabela arduino
+                        pst.executeUpdate();
                     }
+                    //Os arduinos terão novo ID devido ao campo 'idarduino' ser auto-increment
                 }
             } catch (SQLException | HeadlessException f) {
                 JOptionPane.showMessageDialog(null, f);
