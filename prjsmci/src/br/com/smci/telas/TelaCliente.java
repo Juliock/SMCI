@@ -6,8 +6,10 @@
 package br.com.smci.telas;
 
 /**
- *
+ * Form that manages the clients records by allowing CRUD operations
  * @author julio
+ * @version 1.0
+ * @since SMCI 1.0
  */
 import java.sql.*;
 import br.com.smci.dal.ModuloConexao;
@@ -37,6 +39,11 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         conexao = ModuloConexao.conector();
     }
 
+    /**
+     * Method used to add a new record in the clients table
+     * @return Boolean true if the client was successfully added
+     * @since SMCI 1.0
+     */
     private boolean Adicionar() {
         String sql = "INSERT INTO clientes (nome, data_nascimento, cpf, email) VALUES (?,?,?,?)";
         try {
@@ -140,7 +147,10 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         return true;
     }
 
-    //Método para pesquisar clientes (Pesquisa Avançada)
+    /**
+     * Method that searches the clients table for a match with txtCliPesquisar field
+     * @since SMCI 1.0
+     */
     private void Consultar() {
         String sql = "SELECT idcliente AS ID, nome AS Nome, data_nascimento AS Nascimento, cpf AS CPF, email AS Email, data_cadastro AS Inscrição FROM clientes WHERE nome LIKE ?";
         try {
@@ -156,7 +166,10 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         }
     }
 
-    //Método para preencher os campos do formulário TelaCliente
+    /**
+     * Method that fill all the fields of the form when the user click on a tblClientes row
+     * @since SMCI 1.0
+     */
     private void fillFields() {
         int selectedrow = tblClientes.getSelectedRow();
 
@@ -210,7 +223,11 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         }
     }
 
-    //Método para pesquisar o último cliente cadastrado
+    /**
+     * Method used to get the latest record in the client table
+     * @return String containing the ID
+     * @since SMCI 1.0
+     */
     private String lastClientAdded() {
         String sql = "SELECT * FROM clientes ORDER BY idcliente DESC LIMIT 1";
         String lastID = "";
@@ -229,7 +246,11 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         }
     }
 
-    //Método para alterar clientes
+    /**
+     * Method used to update a client record
+     * @return Boolean true if the update succeeded
+     * @since SMCI 1.0
+     */
     private boolean Alterar() {
         int confirma = JOptionPane.showConfirmDialog(null, "Esta ação irá alterar permanentemente alguns registros do cliente.\nDeseja proceder"
                 + " mesmo assim?", "Atenção", JOptionPane.YES_NO_OPTION);
@@ -347,6 +368,11 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         return true;
     }
 
+    /**
+     * Method used to remove a client record
+     * @return Boolean true if the deletion succeeded
+     * @since SMCI 1.0
+     */
     private boolean Remover() {
         //A estrutura abaixo confirma a remoção do cliente
         int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este cadastro?", "Atenção", JOptionPane.YES_NO_OPTION);
@@ -400,6 +426,10 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         return false;
     }
 
+    /**
+     * Method that clears all the form's fields
+     * @since SMCI 1.0
+     */
     private void limpaCampos() {
         txtCliID.setText(null);
         txtCliNome.setText(null);
@@ -898,11 +928,6 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         jLabel17.setText("Id:");
 
         txtCliArduino.setEditable(false);
-        txtCliArduino.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtCliArduinoKeyReleased(evt);
-            }
-        });
 
         jLabel18.setText("*Local da Instalação:");
 
@@ -1049,6 +1074,11 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnCliCreate1ActionPerformed
 
+    /**
+     * Method that updates the tblArduinos table rows but doesnt update them in the database
+     * @param evt ActionEvent provides information about the event
+     * @since SMCI 1.0
+     */
     private void btnCliUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCliUpdate1ActionPerformed
         // Atualiza os dados da linha selecionada
         int selectedrow = tblArduinos.getSelectedRow();
@@ -1071,6 +1101,11 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnCliUpdate1ActionPerformed
 
+    /**
+     * Method that removes a row from the tblArduinos table but doesnt delete them in the database
+     * @param evt ActionEvent provides information about the event
+     * @since SMCI 1.0
+     */
     private void btnCliDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCliDelete1ActionPerformed
         // Deleta os dados da linha selecionada
         int selectedrow = tblArduinos.getSelectedRow();
@@ -1091,6 +1126,11 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         txtCliLI.setText(tblArduinos.getModel().getValueAt(selectedrow, 1).toString());
     }//GEN-LAST:event_tblArduinosMouseClicked
 
+    /**
+     * Method that initializes the TableModels when the Internal Frame opens
+     * @param evt ActionEvent provides information about the event
+     * @since SMCI 1.0
+     */
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         // TODO add your handling code here:
         //Cria objeto do modelo da tabela
@@ -1115,6 +1155,11 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         tblArduinos.setModel(dtm2);
     }//GEN-LAST:event_formInternalFrameOpened
 
+    /**
+     * Method that formats the CPF field
+     * @param evt ActionEvent provides information about the event
+     * @since SMCI 1.0
+     */
     private void txtCliCPFKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCliCPFKeyPressed
         if (evt.getKeyCode() != 8) {    //Se a tecla pressionada não for a Backspace
             // Formata o campo CPF
@@ -1128,6 +1173,11 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtCliCPFKeyPressed
 
+    /**
+     * Method that formats the DataNascimento field
+     * @param evt ActionEvent provides information about the event
+     * @since SMCI 1.0
+     */
     private void txtCliDataNascimentoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCliDataNascimentoKeyPressed
         if (evt.getKeyCode() != 8) {    //Se a tecla pressionada não for a Backspace
             // Formata o campo DataNasc
@@ -1137,6 +1187,11 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtCliDataNascimentoKeyPressed
 
+     /**
+     * Method that formats the Fone field
+     * @param evt ActionEvent provides information about the event
+     * @since SMCI 1.0
+     */
     private void txtCliFoneKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCliFoneKeyPressed
         if (evt.getKeyCode() != 8) {    //Se a tecla pressionada não for a Backspace
             // Formata o campo Fone
@@ -1154,6 +1209,11 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtCliFoneKeyPressed
 
+     /**
+     * Method that closes the connection just before the Internal Frame closes
+     * @param evt ActionEvent provides information about the event
+     * @since SMCI 1.0
+     */
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
         try {
             // Fecha conexão aberta por este form com o banco
@@ -1163,6 +1223,11 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_formInternalFrameClosing
 
+    /**
+     * Method that formats the mobile phone field
+     * @param evt ActionEvent provides information about the event
+     * @since SMCI 1.0
+     */
     private void txtCliCelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCliCelKeyPressed
         if (evt.getKeyCode() != 8) {    //Se a tecla pressionada não for a Backspace
             // Formata o campo Celular
@@ -1180,21 +1245,26 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtCliCelKeyPressed
 
+    /**
+     * Method that removes all the non numbers from the adress number of the client
+     * @param evt ActionEvent provides information about the event
+     * @since SMCI 1.0
+     */
     private void txtCliNumeroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCliNumeroKeyReleased
         //Remove qualquer caracter que não seja um dígito ao soltar uma tecla
         System.out.println(evt.getKeyCode());
         txtCliNumero.setText(txtCliNumero.getText().replaceAll("[^0-9]", ""));
     }//GEN-LAST:event_txtCliNumeroKeyReleased
 
+     /**
+     * Method that removes all the non numbers from the apartment number of the client
+     * @param evt ActionEvent provides information about the event
+     * @since SMCI 1.0
+     */
     private void txtCliAptoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCliAptoKeyReleased
         //Remove qualquer caracter que não seja um dígito ao soltar uma tecla
         txtCliApto.setText(txtCliApto.getText().replaceAll("[^0-9]", ""));
     }//GEN-LAST:event_txtCliAptoKeyReleased
-
-    private void txtCliArduinoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCliArduinoKeyReleased
-        //Remove qualquer caracter que não seja um dígito ao soltar uma tecla
-        txtCliArduino.setText(txtCliArduino.getText().replaceAll("[^0-9]", ""));
-    }//GEN-LAST:event_txtCliArduinoKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

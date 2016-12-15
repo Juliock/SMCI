@@ -6,8 +6,10 @@
 package br.com.smci.misc;
 
 /**
- *
+ * Class that validates a CPF number
  * @author julio
+ * @version 1.0
+ * @since SMCI 1.0
  */
 public class CPF {
 
@@ -16,6 +18,11 @@ public class CPF {
     int dv1 = 0;
     int dv2 = 0;
 
+    /**
+     * Constructor method of the class
+     * @param numero String number of the CPF
+     * @since SMCI 1.0
+     */
     public CPF(String numero) {
         cpf = numero.replaceAll("[^0-9]", "");
 
@@ -25,7 +32,12 @@ public class CPF {
             }
         }
     }
-
+    
+    /**
+     * Method that validates a CPF number
+     * @return Boolean true number is valid false otherwise
+     * @since SMCI 1.0
+     */
     public boolean validaCPF() {
 
         if (cpf.length() == 11) {

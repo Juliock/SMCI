@@ -6,8 +6,10 @@
 package br.com.smci.telas;
 
 /**
- *
+ * Form that manages the user's records by allowing CRUD operations
  * @author julio
+ * @version 1.0
+ * @since SMCI 1.0
  */
 import java.sql.*;
 import br.com.smci.dal.ModuloConexao;
@@ -24,11 +26,19 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
     PreparedStatement pst = null;
     ResultSet rs = null;
 
+    /**
+     * Constructor method of the clas
+     * @since SMCI 1.0
+     */
     public TelaUsuario() {
         initComponents();
         conexao = ModuloConexao.conector();
     }
 
+    /**
+     * Method that searches the user's table for a match with txtUsuId field
+     * @since SMCI 1.0
+     */
     private void Consultar() {
         if (!txtUsuID.getText().isEmpty()) {
             String sql = "SELECT * FROM usuarios WHERE idusuario = ?";
@@ -63,6 +73,11 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         }
     }
 
+    /**
+     * Method used to add a new record in the users table
+     * @return Boolean true if the user was successfully added
+     * @since SMCI 1.0
+     */
     private boolean Adicionar() {
         String sql = "INSERT INTO usuarios (idusuario, nome, data_nascimento, rg, cpf, endereco, fone, email, login, senha, perfil) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
@@ -107,6 +122,10 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         return true;
     }
 
+    /**
+     * Method used to update a user record
+     * @since SMCI 1.0
+     */
     private void Alterar() {
         String sql = "UPDATE usuarios SET nome = ?, endereco = ?, fone = ?, email = ?, login = ?, senha = ?, perfil = ? where idusuario = ?";
 
@@ -140,6 +159,10 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         }
     }
 
+    /**
+     * Method used to remove a user record
+     * @since SMCI 1.0
+     */
     private void Remover() {
         if (!txtUsuID.getText().isEmpty()) {
             //A estrutura abaixo confirma a remoção do usuário
@@ -162,6 +185,10 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         }
     }
 
+    /**
+     * Method that clears all the form's fields
+     * @since SMCI 1.0
+     */
     private void limpaCampos() {
         txtUsuID.setText(null);
         txtUsuDataNascimento.setText(null);

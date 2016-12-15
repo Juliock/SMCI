@@ -25,8 +25,10 @@ import javax.swing.DefaultListModel;
 import static br.com.smci.telas.TelaPrincipal.AlertList;
 
 /**
- *
+ * Class that is constantly monitoring the activity of fires
  * @author julio
+ * @version 1.0
+ * @since SMCI 1.0
  */
 public class Monitorador implements Runnable {
 
@@ -61,6 +63,11 @@ public class Monitorador implements Runnable {
     int idarduino;
     int idcliente;
 
+    /**
+     * Constructor method of the class
+     * Initializes the AlertList with an empty model (default)
+     * Initializes the audio by getting an input stream of it
+     */
     public Monitorador() {
         conexao = ModuloConexao.conector();
 
@@ -77,6 +84,10 @@ public class Monitorador implements Runnable {
     }
 
     @Override
+    /**
+     * Method that overrides the default Run method
+     * @since SMCI 1.0
+     */
     public void run() {
         while (!Thread.currentThread().isInterrupted()) {
             try {
@@ -89,6 +100,10 @@ public class Monitorador implements Runnable {
         }
     }
 
+    /**
+     * Method that creates a Form every time a new fire event occurs
+     * @since SMCI 1.0
+     */
     public void CreateForm() {
         //Oculta qualquer outro form TelaAlerta aberto
         for (int i = 0; i < l1.Size(); i++) {
@@ -122,6 +137,10 @@ public class Monitorador implements Runnable {
 
     }
 
+    /**
+     * Main method of this class which is constantly querying the sensors table looking for any warning
+     * @since SMCI 1.0
+     */
     public void Monitora() {
 
         for (int i = 0; i < l1.Size(); i++) {
@@ -239,6 +258,11 @@ public class Monitorador implements Runnable {
         }
     }
 
+    /**
+     * Method that selects the form according to the AlertList selection
+     * @param str String containing the value of the AlertList selection
+     * @since SMCI 1.0
+     */
     public void selectForm(String str) {
         Scanner sc2 = new Scanner(str).useDelimiter("[^\\d]+");
 

@@ -11,12 +11,18 @@ import java.util.Date;
 import br.com.smci.telas.TelaPrincipal;
 
 /**
- *
+ * Class that implements a Runnable method and is able to get the date and time of the host system every second
  * @author julio
+ * @version 1.0
+ * @since SMCI 1.0
  */
 public class GetTime implements Runnable {
 
     @Override
+    /**
+     * Method that overrides the default Run method
+     * @since SMCI 1.0
+     */
     public void run() {
         while (!Thread.currentThread().isInterrupted()) {
             try {
@@ -29,6 +35,10 @@ public class GetTime implements Runnable {
         }
     }
 
+    /** 
+     * Method that sets the lblData Label to the current system Date
+     * @since SMCI 1.0
+     */
     public void SetaData() {
         // As linhas abaixo substituem a label lblData pela data atual do sistema
         Date data = new Date();
@@ -36,6 +46,10 @@ public class GetTime implements Runnable {
         TelaPrincipal.lblData.setText(formatador.format(data));
     }
 
+    /**
+     * Method that sets the lblHora Label to the current system time
+     * @since SMCI 1.0
+     */
     public void SetaHora() {
         DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
         Date date = new Date();

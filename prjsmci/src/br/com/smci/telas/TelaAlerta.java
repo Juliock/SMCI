@@ -17,8 +17,10 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
 
 /**
- *
+ * Form that shows up when a fire starts and provides useful information to do the right procedures
  * @author julio
+ * @version 1.0
+ * @since SMCI 1.0
  */
 public class TelaAlerta extends javax.swing.JInternalFrame {
 
@@ -26,13 +28,25 @@ public class TelaAlerta extends javax.swing.JInternalFrame {
     //PreparedStatement e ResultSet são Frameworks do pacote java.sql
     PreparedStatement pst = null;
     ResultSet rs = null;
-
-    /**
-     * Creates new form TelaAlerta
-     */
+    
     public int idcli;
     public int idard;
 
+    /**
+     * Constructor method of the class
+     * @param idsensores Integer id of the sensor node
+     * @param data_hora String wich contais the date and time of the occurrence
+     * @param gps String with the GPS information
+     * @param temperatura Float indication of the temperature in graus Celsius
+     * @param humidade Float indicating the humidity percentage
+     * @param gases Float indicating the gas level in the ambient
+     * @param chamas Float indicating the flame level in the ambient
+     * @param tensao_bateria Float indicating the remaining battery voltage of the Arduino
+     * @param intensidade Integer witch gives an ideia of the situation seriousness
+     * @param idarduino Integer id of the Arduino
+     * @param idcliente Integer id of the client
+     * @since SMCI 1.0
+     */
     public TelaAlerta(int idsensores, String data_hora, String gps, float temperatura, float humidade, float gases, float chamas, float tensao_bateria, int intensidade,
             int idarduino, int idcliente) {
 
@@ -57,6 +71,10 @@ public class TelaAlerta extends javax.swing.JInternalFrame {
         fetchData();
     }
 
+    /**
+     * Method that updates the history table
+     * @since SMCI 1.0
+     */
     private void AtualizaHistorico() {
         // Salva o alerta na tabela historico se não houver registro naquela hora
         String sql = "SELECT * FROM historico WHERE data_hora = ? AND idarduino = ? AND idcliente = ?";
@@ -93,6 +111,10 @@ public class TelaAlerta extends javax.swing.JInternalFrame {
         }
     }
 
+    /**
+     * Method that fetches data of the client and firefighters when a fire event is happening
+     * @since SMCI 1.0
+     */
     private void fetchData() {
         String sql = "SELECT *, GROUP_CONCAT(T3.fone SEPARATOR ', ') AS telefones\n"
                 + "FROM clientes T1\n"
@@ -157,7 +179,19 @@ public class TelaAlerta extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-
+    
+    
+    /**
+     * Method that updates the fields in the form
+     * @param gps String with the GPS information
+     * @param temperatura Float indication of the temperature in graus Celsius
+     * @param humidade Float indicating the humidity percentage
+     * @param gases Float indicating the gas level in the ambient
+     * @param chamas Float indicating the flame level in the ambient
+     * @param tensao_bateria Float indicating the remaining battery voltage of the Arduino
+     * @param intensidade Integer witch gives an ideia of the situation seriousness
+     * @since SMCI 1.0
+     */
     public void AtualizaFormulario(String gps, float temperatura, float humidade, float gases, float chamas, float tensao_bateria, int intensidade) {
         txtGps.setText(gps);
         txtTemp.setText(String.valueOf(temperatura) + "°C");
@@ -573,6 +607,11 @@ public class TelaAlerta extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_formInternalFrameActivated
 
+    /**
+     * Method that is called when the print button is pressed and opens a report window
+     * @param evt ActionEvent provides information about the event
+     * @since SMCI 1.0
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         double gpslat = 0;

@@ -10,9 +10,11 @@ import br.com.smci.dal.ModuloConexao;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
-/**
- *
+/** 
+ * Form that allows the user to connect to the system with its credentials
  * @author julio
+ * @version 1.0
+ * @since SMCI 1.0
  */
 public class TelaLogin extends javax.swing.JFrame {
 
@@ -21,6 +23,10 @@ public class TelaLogin extends javax.swing.JFrame {
     PreparedStatement pst = null;
     ResultSet rs = null;
 
+    /**
+     * Method that check the user credentials and open the main window
+     * @since SMCI 1.0
+     */
     public void logar() {
         if (conexao != null) {      //Verifica se o banco de dados está conectado
             String sql = "select * from usuarios where login=? and senha=?";
@@ -67,7 +73,8 @@ public class TelaLogin extends javax.swing.JFrame {
     }
 
     /**
-     * Creates new form TelaLogin
+     * Creates new form TelaLogin and also get the connection instance
+     * @since SMCI 1.0
      */
     public TelaLogin() {
         initComponents();

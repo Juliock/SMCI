@@ -10,8 +10,10 @@ import br.com.smci.threads.Monitorador;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Main window of the system which invokes all other ones except TelaAlerta
  * @author julio
+ * @version 1.0
+ * @since SMCI 1.0
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
@@ -224,6 +226,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Method that opens the TelaBombeiros window
+     * @param evt ActionEvent provides information about the event
+     * @since SMCI 1.0
+     */
     private void MenCadCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenCadCBActionPerformed
         // Chama a telaOs
         TelaBombeiros cb = new TelaBombeiros();
@@ -240,6 +247,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_MenCadCBActionPerformed
 
+    /**
+     * Method that exits the system
+     * @param evt ActionEvent provides information about the event
+     * @since SMCI 1.0
+     */
     private void MenOpcSaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenOpcSaiActionPerformed
         int sair;
 
@@ -254,12 +266,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_MenOpcSaiActionPerformed
 
+    /**
+     * Method that opens the TelaSobre window
+     * @param evt ActionEvent provides information about the event
+     * @since SMCI 1.0
+     */
     private void MenAjuSobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenAjuSobActionPerformed
         // Exibe a tela Sobre
         TelaSobre sobre = new TelaSobre();
         sobre.setVisible(true);
     }//GEN-LAST:event_MenAjuSobActionPerformed
 
+    /**
+     * Method that opens the TelaUsuario window
+     * @param evt ActionEvent provides information about the event
+     * @since SMCI 1.0
+     */
     private void MenCadUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenCadUsuActionPerformed
         //As linhas abaixo abrem o form TelaUsuario dentro do desktop pane
         TelaUsuario usuario = new TelaUsuario();
@@ -276,6 +298,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_MenCadUsuActionPerformed
 
+    /**
+     * Method that opens the TelaCliente window
+     * @param evt ActionEvent provides information about the event
+     * @since SMCI 1.0
+     */
     private void MenCadCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenCadCliActionPerformed
         // Chamando a Tela Cliente
         TelaCliente cliente = new TelaCliente();
@@ -292,6 +319,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_MenCadCliActionPerformed
 
+    /**
+     * Method that logouts from the system
+     * @param evt ActionEvent provides information about the event
+     * @since SMCI 1.0
+     */
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // Fecha a tela principal (logout)
         this.dispose();
@@ -299,6 +331,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         login.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    /**
+     * Method that initializes the atualizaHora and monitora Threads
+     * @param evt ActionEvent provides information about the event
+     * @since SMCI 1.0
+     */
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
         //Inicia uma Thread que atualiza constantemento a data e hora
@@ -312,6 +349,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         monitora.start();
     }//GEN-LAST:event_formWindowOpened
 
+    /**
+     * Method that opens the TelaHistorico window
+     * @param evt ActionEvent provides information about the event
+     * @since SMCI 1.0
+     */
     private void MenRelHistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenRelHistActionPerformed
         // Chamando a Tela Relatorio
         TelaHistorico historico = new TelaHistorico();

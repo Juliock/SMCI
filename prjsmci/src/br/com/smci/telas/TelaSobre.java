@@ -6,8 +6,10 @@
 package br.com.smci.telas;
 
 /**
- *
+ * Form that has the about section and other informations of the software
  * @author julio
+ * @version 1.0
+ * @since SMCI 1.0
  */
 public class TelaSobre extends javax.swing.JFrame {
 

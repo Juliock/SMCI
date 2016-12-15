@@ -6,8 +6,10 @@
 package br.com.smci.telas;
 
 /**
- *
+ * Form that manages the firefighters records by allowing CRUD operations
  * @author julio
+ * @version 1.0
+ * @since SMCI 1.0
  */
 import java.sql.*;
 import br.com.smci.dal.ModuloConexao;
@@ -33,6 +35,10 @@ public class TelaBombeiros extends javax.swing.JInternalFrame {
         conexao = ModuloConexao.conector();
     }
 
+    /**
+     * Method used to add a new record in the bombeiros table
+     * @since SMCI 1.0
+     */
     private void Adicionar() {
         String sql = "INSERT INTO bombeiros (nome, fone, email) VALUES (?,?,?)";
         try {
@@ -85,7 +91,10 @@ public class TelaBombeiros extends javax.swing.JInternalFrame {
         }
     }
 
-    //Método para pesquisar bombeiros (Pesquisa Avançada)
+    /**
+     * Method that searches the bombeiros table for a match with txtCliPesquisar field
+     * @since SMCI 1.0
+     */
     private void Consultar() {
         String sql = "SELECT * FROM bombeiros WHERE nome LIKE ?";
         try {
@@ -101,7 +110,10 @@ public class TelaBombeiros extends javax.swing.JInternalFrame {
         }
     }
 
-    //Método para preencher os campos do formulário TelaBombeiros
+    /**
+     * Method that fill all the fields of the form when the user click on a tblCB row
+     * @since SMCI 1.0
+     */
     private void preencheCampos() {
         int selectedrow = tblCB.getSelectedRow();
 
@@ -136,7 +148,11 @@ public class TelaBombeiros extends javax.swing.JInternalFrame {
         }
     }
 
-    //Método para pesquisar o último corpo de bombeiros cadastrado
+    /**
+     * Method used to get the latest record in the bombeiros table
+     * @return String containing the ID
+     * @since SMCI 1.0
+     */
     private String lastAdded() {
         String sql = "SELECT * FROM bombeiros ORDER BY idbombeiros DESC LIMIT 1";
         String lastID = "";
@@ -153,7 +169,10 @@ public class TelaBombeiros extends javax.swing.JInternalFrame {
         }
     }
 
-    //Método para alterar corpo de bombeiros
+    /**
+     * Method used to update a firefighter record
+     * @since SMCI 1.0
+     */
     private void Alterar() {
         String sql = "UPDATE bombeiros SET nome = ?, fone = ?, email = ? WHERE idbombeiros = ?";
         try {
@@ -202,6 +221,10 @@ public class TelaBombeiros extends javax.swing.JInternalFrame {
         }
     }
 
+    /**
+     * Method used to remove a firefighter record
+     * @since SMCI 1.0
+     */
     private void Remover() {
         //A estrutura abaixo confirma a remoção do corpo de bombeiros
         int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este cadastro?", "Atenção", JOptionPane.YES_NO_OPTION);
@@ -231,6 +254,10 @@ public class TelaBombeiros extends javax.swing.JInternalFrame {
         }
     }
 
+    /**
+     * Method that clears all the form's fields
+     * @since SMCI 1.0
+     */
     private void limpaCampos() {
         txtCBID.setText(null);
         txtCBNome.setText(null);

@@ -8,13 +8,18 @@ package br.com.smci.dal;
 import java.sql.*;
 
 /**
- *
+ * Class that establish connection with the database
  * @author julio
+ * @version 1.0
+ * @since SMCI 1.0
  */
 public class ModuloConexao {
     
-    //Método responsável por estabelecer a conexão com o banco
-    
+    /**
+     * Method that connects to the database
+     * @return Connection instance of the database
+     * @since SMCI 1.0
+     */
     public static Connection conector() {
         java.sql.Connection conexao = null;
         //A linha abaixo chama o driver

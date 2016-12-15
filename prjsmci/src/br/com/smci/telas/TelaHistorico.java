@@ -14,8 +14,10 @@ import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
- *
+ * Form that provides history of the fires that may have occurred in a client's ambient
  * @author julio
+ * @version 1.0
+ * @since SMCI 1.0
  */
 public class TelaHistorico extends javax.swing.JInternalFrame {
 
@@ -25,8 +27,9 @@ public class TelaHistorico extends javax.swing.JInternalFrame {
     ResultSet rs = null;
     DefaultTableModel dtm1;
     DefaultListModel lm1;
+    
     /**
-     * Creates new form TelaHistorico
+     * Creates new form TelaHistorico and sets HistList to the DefaultListModel
      */
     public TelaHistorico() {
         initComponents();
@@ -38,7 +41,10 @@ public class TelaHistorico extends javax.swing.JInternalFrame {
         conexao = ModuloConexao.conector();
     }
     
-    //Método para pesquisar clientes (Pesquisa Avançada)
+    /**
+     * Method that searches the clients table for a match with txtHistPesquisar field
+     * @since SMCI 1.0
+     */
     private void ConsultarCliente() {
         String sql = "SELECT idcliente AS ID, nome AS Nome, data_nascimento AS Nascimento, cpf AS CPF, email AS Email, data_cadastro AS Inscrição FROM clientes WHERE nome LIKE ?";
         
@@ -55,7 +61,10 @@ public class TelaHistorico extends javax.swing.JInternalFrame {
         }
     }
     
-    //Método para preencher lista com entradas no historico
+    /**
+     * Method that fill all the fields of the form when the user click on a tblHistClientes row
+     * @since SMCI 1.0
+     */
     private void preencheLista() {
         int selectedrow = tblHistClientes.getSelectedRow();
 
@@ -77,7 +86,10 @@ public class TelaHistorico extends javax.swing.JInternalFrame {
         }
     }
     
-    //Método para preencher campos do formulario
+    /**
+     * Method that searches if a client record matches with txtHistPesquisar field and if so then fill some fields with the information retrieved
+     * @since SMCI 1.0
+     */
     private void ConsultarHistorico() {
         Scanner sc2 = new Scanner(HistList.getSelectedValue()).useDelimiter("[^\\d]+");
 
@@ -368,6 +380,11 @@ public class TelaHistorico extends javax.swing.JInternalFrame {
         preencheLista();
     }//GEN-LAST:event_tblHistClientesMouseClicked
 
+    /**
+     * Method that initializes the TableModels when the Internal Frame opens
+     * @param evt ActionEvent provides information about the event
+     * @since SMCI 1.0
+     */
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         //Cria objeto do modelo da tabela
         dtm1 = new DefaultTableModel(0, 0);
