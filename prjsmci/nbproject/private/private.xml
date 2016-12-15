@@ -3,21 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/julio/Debug%20-%20PRJSMCI/prjsmci/src/br/com/smci/telas/TelaLogin.java</file>
-            <file>file:/C:/Users/julio/Debug%20-%20PRJSMCI/prjsmci/src/br/com/smci/threads/Monitorador.java</file>
-            <file>file:/C:/Users/julio/Debug%20-%20PRJSMCI/prjsmci/src/br/com/smci/misc/CPF.java</file>
-            <file>file:/C:/Users/julio/Debug%20-%20PRJSMCI/prjsmci/src/br/com/smci/telas/TelaPrincipal.java</file>
-            <file>file:/C:/Users/julio/Debug%20-%20PRJSMCI/prjsmci/src/br/com/smci/threads/GetTime.java</file>
-            <file>file:/C:/Users/julio/Debug%20-%20PRJSMCI/prjsmci/src/br/com/smci/telas/TelaSobre.java</file>
-            <file>file:/C:/Users/julio/Debug%20-%20PRJSMCI/prjsmci/src/br/com/smci/misc/Teste.java</file>
-            <file>file:/C:/Users/julio/Debug%20-%20PRJSMCI/prjsmci/src/br/com/smci/telas/TelaUsuario.java</file>
-            <file>file:/C:/Users/julio/Debug%20-%20PRJSMCI/prjsmci/src/br/com/smci/misc/Nodo.java</file>
-            <file>file:/C:/Users/julio/Debug%20-%20PRJSMCI/prjsmci/src/br/com/smci/dal/ModuloConexao.java</file>
-            <file>file:/C:/Users/julio/Debug%20-%20PRJSMCI/prjsmci/src/br/com/smci/telas/TelaBombeiros.java</file>
-            <file>file:/C:/Users/julio/Debug%20-%20PRJSMCI/prjsmci/src/br/com/smci/telas/TelaCliente.java</file>
-            <file>file:/C:/Users/julio/Debug%20-%20PRJSMCI/prjsmci/src/br/com/smci/misc/ListaForms.java</file>
-            <file>file:/C:/Users/julio/Debug%20-%20PRJSMCI/prjsmci/src/br/com/smci/telas/TelaHistorico.java</file>
-            <file>file:/C:/Users/julio/Debug%20-%20PRJSMCI/prjsmci/src/br/com/smci/telas/TelaAlerta.java</file>
+            <file>file:/C:/Users/julio/Debug-prjsmci/prjsmci/src/br/com/smci/telas/TelaAlerta.java</file>
+            <file>file:/C:/Users/julio/Debug-prjsmci/prjsmci/src/br/com/smci/telas/TelaSobre.java</file>
+            <file>file:/C:/Users/julio/Debug-prjsmci/prjsmci/src/br/com/smci/telas/TelaCliente.java</file>
+            <file>file:/C:/Users/julio/Debug-prjsmci/prjsmci/src/br/com/smci/telas/TelaPrincipal.java</file>
+            <file>file:/C:/Users/julio/Debug-prjsmci/prjsmci/src/br/com/smci/telas/TelaLogin.java</file>
+            <file>file:/C:/Users/julio/Debug-prjsmci/prjsmci/src/br/com/smci/telas/TelaUsuario.java</file>
+            <file>file:/C:/Users/julio/Debug-prjsmci/prjsmci/src/br/com/smci/telas/TelaBombeiros.java</file>
+            <file>file:/C:/Users/julio/Debug-prjsmci/prjsmci/src/br/com/smci/telas/TelaHistorico.java</file>
         </group>
     </open-files>
 </project-private>
